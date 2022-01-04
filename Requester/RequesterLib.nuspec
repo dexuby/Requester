@@ -10,6 +10,6 @@
     <projectUrl>$projectUrl$</projectUrl>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <tags>webrequests webrequest requests request httpclient</tags>
+    <tags>$tags$</tags>
   </metadata>
 </package>

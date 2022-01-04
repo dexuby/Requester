@@ -11,6 +11,8 @@
     <AssemblyName>RequesterLib</AssemblyName>
     <RepositoryUrl>https://github.com/dexuby/Requester</RepositoryUrl>
     <PackageProjectUrl>https://github.com/dexuby/Requester</PackageProjectUrl>
+    <PackageTags>webrequests webrequest requests request httpclient</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 </Project>
