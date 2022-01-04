@@ -6,7 +6,7 @@
     <PackageId>RequesterLib</PackageId>
     <Authors>dex</Authors>
     <Product>RequesterLib</Product>
-    <Description>Simple library to make web requests easier (utilizes the HttpClient).</Description>
+    <Description>Simple library to make request interactions with endpoints easier.</Description>
     <Version>1.0.8</Version>
     <AssemblyName>RequesterLib</AssemblyName>
   </PropertyGroup>
