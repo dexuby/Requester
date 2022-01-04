@@ -1,4 +1,4 @@
 # Requester
-Simple library to make request interactions with endpoints easier.
+[![NuGet version](https://badge.fury.io/nu/RequesterLib.svg)](https://badge.fury.io/nu/RequesterLib)
 
-NuGet: https://www.nuget.org/packages/RequesterLib/
+Simple library to make request interactions with endpoints easier.
