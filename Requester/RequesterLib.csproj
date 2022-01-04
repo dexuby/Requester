@@ -7,8 +7,10 @@
     <Authors>dex</Authors>
     <Product>RequesterLib</Product>
     <Description>Simple library to make request interactions with endpoints easier.</Description>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <AssemblyName>RequesterLib</AssemblyName>
+    <RepositoryUrl>https://github.com/dexuby/Requester</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/dexuby/Requester</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>
