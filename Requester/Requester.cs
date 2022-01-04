@@ -13,6 +13,8 @@ namespace RequesterLib
 {
     public class Requester
     {
+        private const string DefaultMediaType = "application/x-www-form-urlencoded";
+
         private readonly HttpClient _httpClient;
         private readonly CookieContainer _cookieContainer = new();
 
@@ -87,7 +89,7 @@ namespace RequesterLib
             await _httpClient.PostAsync(url, content);
 
         public async Task<HttpResponseMessage> PostStringContentAsync(string url, string content, Encoding encoding = default,
-            string mediaType = "application/x-www-form-urlencoded") =>
+            string mediaType = DefaultMediaType) =>
             await _httpClient.PostAsync(url, new StringContent(content, encoding, mediaType));
 
         public async Task<HttpResponseMessage> PostAsJsonAsync<T>(string url, T obj,
