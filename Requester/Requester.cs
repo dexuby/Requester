@@ -86,7 +86,7 @@ namespace RequesterLib
         public async Task<HttpResponseMessage> PostAsync(string url, HttpContent content) =>
             await _httpClient.PostAsync(url, content);
 
-        public async Task<HttpResponseMessage> PostStringContentAsync(string url, string content, Encoding encoding,
+        public async Task<HttpResponseMessage> PostStringContentAsync(string url, string content, Encoding encoding = default,
             string mediaType = "application/x-www-form-urlencoded") =>
             await _httpClient.PostAsync(url, new StringContent(content, encoding, mediaType));
 
