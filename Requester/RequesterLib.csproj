@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Requester</PackageId>
+    <PackageId>RequesterLib</PackageId>
     <Authors>dex</Authors>
-    <Product>Requester</Product>
+    <Product>RequesterLib</Product>
     <Description>Simple library to make web requests easier (utilizes the HttpClient).</Description>
-    <Version>1.0.7</Version>
-    <AssemblyName>Requester</AssemblyName>
+    <Version>1.0.8</Version>
+    <AssemblyName>RequesterLib</AssemblyName>
   </PropertyGroup>
 
 </Project>
