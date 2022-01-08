@@ -88,9 +88,31 @@ namespace RequesterLib
         public async Task<HttpResponseMessage> PostAsync(string url, HttpContent content) =>
             await _httpClient.PostAsync(url, content);
 
-        public async Task<HttpResponseMessage> PostStringContentAsync(string url, string content, Encoding encoding = default,
+        public async Task<HttpResponseMessage> PostStringContentAsync(string url, string content,
+            Encoding encoding = default,
             string mediaType = DefaultMediaType) =>
             await _httpClient.PostAsync(url, new StringContent(content, encoding, mediaType));
+
+        public async Task<JsonElement> PostStringContentAndGetJsonElementAsync(string url, string content,
+            JsonSerializerOptions serializerOptions = null, CancellationToken cancellationToken = default,
+            Encoding encoding = default, string mediaType = DefaultMediaType)
+        {
+            var responseMessage = await _httpClient.PostAsync(url, new StringContent(content, encoding, mediaType),
+                cancellationToken);
+            return (await JsonDocument.ParseAsync(await responseMessage.Content.ReadAsStreamAsync(cancellationToken),
+                cancellationToken: cancellationToken)).RootElement;
+        }
+
+        public async Task<T> PostStringContentAndGetFromJsonAsync<T>(string url, string content,
+            JsonSerializerOptions serializerOptions = null, CancellationToken cancellationToken = default,
+            Encoding encoding = default, string mediaType = DefaultMediaType)
+        {
+            var responseMessage = await _httpClient.PostAsync(url, new StringContent(content, encoding, mediaType),
+                cancellationToken);
+            return await JsonSerializer.DeserializeAsync<T>(
+                await responseMessage.Content.ReadAsStreamAsync(cancellationToken),
+                cancellationToken: cancellationToken);
+        }
 
         public async Task<HttpResponseMessage> PostAsJsonAsync<T>(string url, T obj,
             JsonSerializerOptions serializerOptions = null, CancellationToken cancellationToken = default) =>
