@@ -16,6 +16,7 @@ namespace RequesterLib
         private const string DefaultMediaType = "application/x-www-form-urlencoded";
 
         private readonly HttpClient _httpClient;
+        private readonly HttpClientHandler _httpClientHandler;
         private readonly CookieContainer _cookieContainer = new();
 
         private Requester()
@@ -25,6 +26,7 @@ namespace RequesterLib
                 CookieContainer = _cookieContainer
             };
 
+            _httpClientHandler = httpClientHandler;
             _httpClient = new HttpClient(httpClientHandler);
         }
 
@@ -76,6 +78,10 @@ namespace RequesterLib
                     cookie.Expired = true;
         }
 
+        public void SetProxy(IWebProxy proxy) => _httpClientHandler.Proxy = proxy;
+
+        public IWebProxy GetProxy() => _httpClientHandler.Proxy;
+
         public async Task<HttpResponseMessage> GetAsync(string url) => await _httpClient.GetAsync(url);
 
         public async Task<string> GetStringAsync(string url) => await _httpClient.GetStringAsync(url);
@@ -122,6 +128,7 @@ namespace RequesterLib
             JsonSerializerOptions serializerOptions = null, CancellationToken cancellationToken = default)
         {
             var responseMessage = await _httpClient.PostAsJsonAsync(url, obj, serializerOptions, cancellationToken);
+
             return (await JsonDocument.ParseAsync(await responseMessage.Content.ReadAsStreamAsync(cancellationToken),
                 cancellationToken: cancellationToken)).RootElement;
         }
