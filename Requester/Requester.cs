@@ -80,6 +80,8 @@ namespace RequesterLib
 
         public void SetProxy(IWebProxy proxy) => _httpClientHandler.Proxy = proxy;
 
+        public void SetProxy(string host, int port) => _httpClientHandler.Proxy = new WebProxy(host, port);
+
         public IWebProxy GetProxy() => _httpClientHandler.Proxy;
 
         public async Task<HttpResponseMessage> GetAsync(string url) => await _httpClient.GetAsync(url);
@@ -177,6 +179,18 @@ namespace RequesterLib
             public Builder WithCookies(params (string, string, string)[] pairs)
             {
                 _requester.AddCookies(pairs);
+                return this;
+            }
+
+            public Builder WithProxy(IWebProxy proxy)
+            {
+                _requester.SetProxy(proxy);
+                return this;
+            }
+
+            public Builder WithProxy(string host, int port)
+            {
+                _requester.SetProxy(host, port);
                 return this;
             }
 
